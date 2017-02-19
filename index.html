@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Webmap della gara">
+<meta name="author" content="Luca Moiana">
+<link rel="icon" href="images/favicon.ico">
+<title>VIII maratonina del RUGARETO</title>
+
+<link rel="stylesheet" href="css/leaflet.css">
+<link rel="stylesheet" href="css/rugareto.css">
+<style type="text/css">
+html {
+height: 100%;
+width: 100%;
+overflow: hidden;
+}
+body {
+height: 100%;
+width: 100%;
+padding-top: 50px;
+padding-bottom: 0px;
+}
+#map {
+height: 100%;
+width: 100%;
+}
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+.container .text-muted {
+margin: 00px 0;
+}
+code {
+font-size: 80%;
+}
+.dist-marker {
+font-size: 14px;
+text-align: center;
+color: #425025;
+text-shadow: 2px 0 0 #FFFFFF, -2px 0 0 #FFFFFF, 0 2px 0 #FFFFFF, 0 -2px 0 #FFFFFF, 1.25px 1.25px #FFFFFF, -1.25px -1.25px 0 #FFFFFF, 1.25px -1.25px 0 #FFFFFF, -1.25px 1.25px 0 #FFFFFF; }
+.weather {
+font: 8px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+width:auto;
+padding: 5px 10px 5px 10px;
+text-color: #425025;
+text-decoration:none;
+background: #A7B65B;
+margin-right: 10px;
+margin-top: 5px;
+border-radius: 5px;
+}
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+.container .text-muted {
+margin: 20px 0;
+}
+code {
+font-size: 80%;
+}
+</style>
+</head>
+<body>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          MdR 2017
+          </a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="regolamento.html"><i class="fa fa-clipboard"></i>&nbsp;&nbsp;Regolamento</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-pencil"></i>&nbsp;Iscrizioni</a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="./DATA/IscrizioneMinori.pdf"><i class="fa fa-user"></i>&nbsp;Modulo iscrizione minori</a></li>
+            </ul>
+          </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-heart"></i>&nbsp;Solidariet&#224</a>
+        <ul class="dropdown-menu" role="menu">
+        <li><a href="http://www.granello-coop.com/">&nbsp;Parte del ricavato<br> verrà devoluto a il Granello ONLUS</a></li>
+        </ul>
+        </li>
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-envelope"></i>&nbsp;Contatti</a>
+        <ul class="dropdown-menu" role="menu">
+        <li><a href="mailto:info@5cascine.it?subject=Richiesta%20informazioni%20Maratonina%20del%20Rugareto%202017"><i class="fa fa-envelope"></i>&nbsp;email</a></li>
+              <li><a href="https://www.facebook.com/MaratoninaDelRugareto/"><i class="fa fa-facebook"></i>&nbsp;Facebook</a></li>
+        <li><a href="https://twitter.com/5cascine"><i class=" fa fa-twitter"></i>&nbsp;Twitter</a></li>
+        <li><a href="https://instagram.com/5cascine/"><i class="fa fa-instagram"></i>&nbsp;Instagram</a></li>
+            </ul>
+          </li>
+      <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bookmark"></i>&nbsp;Sponsor</a>
+            <ul class="dropdown-menu" role="menu">
+            <li role="presentation" class="dropdown-header"><b> OFFICIAL</b></li>
+              <li><a href="http://www.acpmi.it"><b> AC Consulting di Saronno</b></a></li>
+              <li><a href="https://www.facebook.com/AVIS-Cislago-157634700952804/"><b> Avis Cislago</b></a></li>
+              <li><a href="http://www.campingcontinental.com"><b> Continental Camping Village</b></a></li>
+              <li><a href="http://www.facebook.com/ilgelatosaronno"><b> Il Gelato</b></a></li>
+              <li class="divider"></li>
+              <li role="presentation" class="dropdown-header"><b> GOLD</b></li>
+                <li>&nbsp; &nbsp; &nbsp; Allianz RAS</li>
+                <li>&nbsp; &nbsp; &nbsp; Centro medico sportivio Fisio 1</li>
+                <li>&nbsp; &nbsp; &nbsp; More Transport</li>
+                <li>&nbsp; &nbsp; &nbsp; Oasi della Frutta</li>
+                <li>&nbsp; &nbsp; &nbsp; Stuzzicando</li>
+                <li>&nbsp; &nbsp; &nbsp; La Vigna</li>
+                <li>&nbsp; &nbsp; &nbsp; Vision Lingue</li>
+                <li>&nbsp; &nbsp; &nbsp; Punti di Vista</li>
+              <li class="divider"></li>
+              <li role="presentation" class="dropdown-header"><b> SILVER</b></li>
+              <li>&nbsp; &nbsp; &nbsp; Accademy Cafe</li>
+              <li>&nbsp; &nbsp; &nbsp; Etichettificio Caldirola</li>
+              <li>&nbsp; &nbsp; &nbsp; Cinzia</li>
+              <li>&nbsp; &nbsp; &nbsp; Cose di Casa</li>
+              <li>&nbsp; &nbsp; &nbsp; Caffé Elite</li>
+              <li>&nbsp; &nbsp; &nbsp; Supermarket Fernanda</li>
+              <li>&nbsp; &nbsp; &nbsp; Holliplant</li>
+              <li>&nbsp; &nbsp; &nbsp; Levis Salumi</li>
+              <li>&nbsp; &nbsp; &nbsp; Lupo dei Lupis</li>
+              <li>&nbsp; &nbsp; &nbsp; La Milanesa</li>
+              <li>&nbsp; &nbsp; &nbsp; La Mimosa</li>
+              <li>&nbsp; &nbsp; &nbsp; Racos</li>
+              <li>&nbsp; &nbsp; &nbsp; Il Ramo d’oro</li>
+              <li>&nbsp; &nbsp; &nbsp; Sprilux</li>
+              <li>&nbsp; &nbsp; &nbsp; Macelleria Zaffaroni</li>
+
+            </ul>
+          </li>
+
+          <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cloud-download"></i>&nbsp;Download</a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="./DATA/corto.gpx" download>&nbsp; 7Km GPX</a></li>
+                  <li><a href="./DATA/medio.gpx" download>&nbsp; 15Km GPX</a></li>
+                  <li><a href="./DATA/lungo.gpx" download>&nbsp; 20Km GPX</a></li>
+                </ul>
+              </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+<!-- Begin page content -->
+<div id="map">
+map
+</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="css/leaflet.awesome-markers.css">
+<script src='src/jquery-1.11.2.min.js'></script>
+<script src="src/bootstrap.min.js"></script>
+<script src="src/leaflet.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<script src="src/leaflet.groupedlayercontrol.js"></script>
+<link rel="stylesheet" href="css/leaflet.groupedlayercontrol.css" />
+<script src="src/leaflet.geometryutil.js" type="text/javascript"></script>
+<script src="src/leaflet-distance-marker.js" type="text/javascript"></script>
+<link rel="stylesheet" href="css/leaflet.zoomhome.css"/>
+<script src="src/leaflet.zoomhome.min.js" type="text/javascript">></script>
+<script src="src/Leaflet.MakiMarkers.js" type="text/javascript">></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+<!-- Dati -->
+<script src="DATA/parking.js"> </script>
+<script src="DATA/corto.js"> </script>
+<script src="DATA/medio.js"> </script>
+<script src="DATA/lungo.js"> </script>
+<script src="DATA/exp_chiusuratraffico.js"></script>
+<script src="DATA/doccia_route.js"></script>
+<script src="src/map.js"></script>
+</body>
+</html>
