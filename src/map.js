@@ -93,6 +93,8 @@ var chiusuratrafficostyle = {
 var lungo = L.geoJson(lungo, {style: lungostyle}).bindPopup('80% BOSCO');
 var medio = L.geoJson(medio, {style: mediostyle});
 var corto = L.geoJson(corto, {style: cortostyle}).bindPopup('Percorribile con passeggino');
+var opzione10 = L.geoJson(opzione10, {style: cortostyle}).bindPopup('DA TESTARE');
+var opzione11 = L.geoJson(opzione11, {style: cortostyle}).bindPopup('DA TESTARE');
 
 var chiusuratraffico = L.geoJson(exp_chiusuratraffico, {
 style: chiusuratrafficostyle
@@ -119,12 +121,16 @@ var doccia_route = L.geoJson(doccia_route, {style: doccia_route_style});
 var corto_group = L.layerGroup([corto, ristoro_massina]);
 var medio_group = L.layerGroup([medio, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
 var lungo_group = L.layerGroup([lungo, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
+var opzione_10_group = L.layerGroup([opzione10, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
+var opzione_11_group = L.layerGroup([opzione11, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
 var doccia_group = L.layerGroup([doccia, doccia_parcheggio, doccia_route]);
 
 var groupedOverlays = {
-"<b>7 Km</b>": corto_group,
-"<b>15 Km</b>": medio_group,
-"<b>20 Km</b>": lungo_group
+"<b>7,5 Km</b>": corto_group,
+"<b>15,5 Km</b>": medio_group,
+"<b>20,5 Km</b>": lungo_group,
+"<b>10,5 Km</b>": opzione_10_group,
+"<b>11,5 Km</b>": opzione_11_group
 };
 var groupedOverlays2 = {
 "come raggiungerci": servizi,
