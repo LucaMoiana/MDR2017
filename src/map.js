@@ -122,9 +122,9 @@ var lungo_group = L.layerGroup([lungo, ristoro_massina, ristoro_visconta, ristor
 var doccia_group = L.layerGroup([doccia, doccia_parcheggio, doccia_route]);
 
 var groupedOverlays = {
-"<b>7 Km</b>": corto_group,
-"<b>15 Km</b>": medio_group,
-"<b>20 Km</b>": lungo_group
+"<b>7,5 Km</b>": corto_group,
+"<b>15,5 Km</b>": medio_group,
+"<b>20,5 Km</b>": lungo_group
 };
 var groupedOverlays2 = {
 "come raggiungerci": servizi,
