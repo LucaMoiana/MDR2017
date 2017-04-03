@@ -182,3 +182,9 @@ info.onAdd = function (map) {
 };
 info.addTo(map);
 info._div.innerHTML = '<img src="https://sites.google.com/site/5cascine/_/rsrc/1297459381504/chi-siamo/logo_uff_medium.jpg" alt="Logo" height="100" width="87">';
+
+// set maxBounds
+var bounds = L.featureGroup([lungo_group])
+map.setMaxBounds(bounds.getBounds(), {
+padding: [150, 150]
+});
