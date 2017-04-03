@@ -122,6 +122,7 @@ var corto_group = L.layerGroup([corto, ristoro_massina]);
 var medio_group = L.layerGroup([medio, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
 var lungo_group = L.layerGroup([lungo, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
 var opzione_10_group = L.layerGroup([opzione10, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
+<<<<<<< HEAD
 var opzione_11_group = L.layerGroup([opzione11, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
 var doccia_group = L.layerGroup([doccia, doccia_parcheggio, doccia_route]);
 
@@ -131,6 +132,16 @@ var groupedOverlays = {
 "<b>20,5 Km</b>": lungo_group,
 "<b>10,5 Km</b>": opzione_10_group,
 "<b>11,5 Km</b>": opzione_11_group
+=======
+//var opzione_11_group = L.layerGroup([opzione11, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
+var doccia_group = L.layerGroup([doccia, doccia_parcheggio, doccia_route]);
+
+var groupedOverlays = {
+"<b>7 Km</b>": corto_group,
+"<b>10 Km</b>": opzione_10_group,
+"<b>15 Km</b>": medio_group,
+"<b>20 Km</b>": lungo_group
+>>>>>>> gh-pages
 };
 var groupedOverlays2 = {
 "come raggiungerci": servizi,
@@ -182,3 +193,9 @@ info.onAdd = function (map) {
 };
 info.addTo(map);
 info._div.innerHTML = '<img src="https://sites.google.com/site/5cascine/_/rsrc/1297459381504/chi-siamo/logo_uff_medium.jpg" alt="Logo" height="100" width="87">';
+
+// set maxBounds
+var bounds = L.featureGroup([lungo_group])
+map.setMaxBounds(bounds.getBounds(), {
+padding: [150, 150]
+});
