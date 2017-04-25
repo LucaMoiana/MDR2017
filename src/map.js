@@ -19,13 +19,13 @@ zoomHome.addTo(map);
 var servizi = new L.LayerGroup();
 // Aggiunti marker
 // Creare icone
-var partenza_icon = L.MakiMarkers.icon({icon: "pitch", color: "#EA3556", size: "m"});
-var ristoro_icon = L.MakiMarkers.icon({icon: "beer", color: "#55BBEE", size: "m"});
+var partenza_icon = L.MakiMarkers.icon({icon: "pitch", color: "#df014a", size: "m"});
+var ristoro_icon = L.MakiMarkers.icon({icon: "beer", color: "#75BACA", size: "m"});
 var stazione_icon = L.MakiMarkers.icon({icon: "rail", color: "#ab89ab", size: "m"});
 var parcheggio_icon = L.MakiMarkers.icon({icon: "parking", color: "4444BB", size: "m"});
-var panino_icon = L.MakiMarkers.icon({icon: "fast-food", color: "#55BBEE", size: "m"});
-var bar_icon = L.MakiMarkers.icon({icon: "bar", color: "#55BBEE", size: "m"});
-var doccia_icon = L.MakiMarkers.icon({icon: "circle", color: "#55BBEE", size: "m"});
+var panino_icon = L.MakiMarkers.icon({icon: "fast-food", color: "#75BACA", size: "m"});
+var bar_icon = L.MakiMarkers.icon({icon: "bar", color: "#75BACA", size: "m"});
+var doccia_icon = L.MakiMarkers.icon({icon: "circle", color: "#75BACA", size: "m"});
 //Creati markers
 var partenza = L.marker([45.656945208740474, 8.970540960046485], {
   icon: partenza_icon
@@ -34,17 +34,17 @@ var partenza = L.marker([45.656945208740474, 8.970540960046485], {
 }).on('mouseout', function(){this.closePopup();});
 partenza.addTo(map);
 
-var ristoro_massina = L.marker([45.6398993999927, 8.9654026], {
+var ristoro_massina = L.marker([45.63988215475914956, 8.96780776119957501], {
   icon: ristoro_icon
 }).on('mouseover', function() {
   this.bindPopup("<img width=210 height=131 src=images/massina.jpg /><br /><strong>Ristoro Massina</strong>").openPopup();
 }).on('mouseout', function(){this.closePopup();});
-var ristoro_roccolo = L.marker([45.641661216226915, 8.953651498531297], {
+var ristoro_roccolo = L.marker([45.6416612162269, 8.9536514985313], {
   icon: panino_icon
 }).on('mouseover', function() {
   this.bindPopup("<img width=210 height=131 src=images/roccolo.jpg><strong><br />Risotoro il Roccolo</strong>").openPopup();
 }).on('mouseout', function(){this.closePopup();});
-var ristoro_visconta = L.marker([45.651872831999938, 8.947138857978208], {
+var ristoro_visconta = L.marker([45.6518728319999, 8.94713885797821], {
   icon: bar_icon
 }).on('mouseover', function() {
   this.bindPopup("<img width=210 height=141 src=images/visconta.jpg><strong><br />Ristoro Visconta</strong>").openPopup();
@@ -64,20 +64,26 @@ return L.marker([lng,lat],
 parcheggi.addTo(servizi);
 <!--Added track from external geojson -->
 //track Style
-var cortostyle = {
-"color": "#BB2233",
+var primostyle = {
+"color": "#94D82D",
 "weight": 4.5,
 "opacity": 0.8,
 "z-index": 2,
 };
-var mediostyle = {
-"color": "#4444BB",
+var secondostyle = {
+"color": "#E3B62E",
 "weight": 4.5,
 "opacity": 0.8,
 "z-index": 2
 };
-var lungostyle = {
-"color": "#779900",
+var terzostyle = {
+"color": "#DF014A",
+"weight": 4.5,
+"opacity": 0.8,
+"z-index": 2
+};
+var quartostyle = {
+"color": "#75BACA",
 "weight": 4.5,
 "opacity": 0.8,
 "z-index": 3
@@ -90,11 +96,12 @@ var chiusuratrafficostyle = {
 "fillOpacity": 0.4
 };
 // track import
-var lungo = L.geoJson(lungo, {style: lungostyle}).bindPopup('80% BOSCO');
-var medio = L.geoJson(medio, {style: mediostyle});
-var corto = L.geoJson(corto, {style: cortostyle}).bindPopup('Percorribile con passeggino');
-var opzione10 = L.geoJson(opzione10, {style: cortostyle}).bindPopup('DA TESTARE');
-var opzione11 = L.geoJson(opzione11, {style: cortostyle}).bindPopup('DA TESTARE');
+var primo = L.geoJson(primo, {style: primostyle}).bindPopup('Percorribile con passeggino');
+var secondo = L.geoJson(secondo, {style: secondostyle}).bindPopup('DA TESTARE');
+var terzo = L.geoJson(terzo, {style: terzostyle});
+var quarto = L.geoJson(quarto, {style: quartostyle}).bindPopup('80% BOSCO');
+
+// var opzione11 = L.geoJson(opzione11, {style: primostyle}).bindPopup('DA TESTARE');
 
 var chiusuratraffico = L.geoJson(exp_chiusuratraffico, {
 style: chiusuratrafficostyle
@@ -110,7 +117,7 @@ var doccia = L.marker([45.66445, 8.96610], {
 var doccia_parcheggio = L.marker([45.66383, 8.96774], {icon: parcheggio_icon});
 
 var doccia_route_style = {
-  "color": "#55BBEE",
+  "color": "#75BACA",
   "weight": 5.5,
   "opacity": 0.8,
   "z-index": 3
@@ -118,30 +125,17 @@ var doccia_route_style = {
 var doccia_route = L.geoJson(doccia_route, {style: doccia_route_style});
 
 // Add layers control
-var corto_group = L.layerGroup([corto, ristoro_massina]);
-var medio_group = L.layerGroup([medio, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
-var lungo_group = L.layerGroup([lungo, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
-var opzione_10_group = L.layerGroup([opzione10, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
-<<<<<<< HEAD
-var opzione_11_group = L.layerGroup([opzione11, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
+var primo_group = L.layerGroup([primo, ristoro_massina]);
+var secondo_group = L.layerGroup([secondo, ristoro_massina, ristoro_roccolo]);
+var terzo_group = L.layerGroup([terzo, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
+var quarto_group = L.layerGroup([quarto, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
 var doccia_group = L.layerGroup([doccia, doccia_parcheggio, doccia_route]);
 
 var groupedOverlays = {
-"<b>7,5 Km</b>": corto_group,
-"<b>15,5 Km</b>": medio_group,
-"<b>20,5 Km</b>": lungo_group,
-"<b>10,5 Km</b>": opzione_10_group,
-"<b>11,5 Km</b>": opzione_11_group
-=======
-//var opzione_11_group = L.layerGroup([opzione11, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
-var doccia_group = L.layerGroup([doccia, doccia_parcheggio, doccia_route]);
-
-var groupedOverlays = {
-"<b>7 Km</b>": corto_group,
-"<b>10 Km</b>": opzione_10_group,
-"<b>15 Km</b>": medio_group,
-"<b>20 Km</b>": lungo_group
->>>>>>> gh-pages
+"<b>7 Km</b>": primo_group,
+"<b>10 Km</b>": secondo_group,
+"<b>15 Km</b>": terzo_group,
+"<b>20 Km</b>": quarto_group
 };
 var groupedOverlays2 = {
 "come raggiungerci": servizi,
@@ -195,7 +189,7 @@ info.addTo(map);
 info._div.innerHTML = '<img src="https://sites.google.com/site/5cascine/_/rsrc/1297459381504/chi-siamo/logo_uff_medium.jpg" alt="Logo" height="100" width="87">';
 
 // set maxBounds
-var bounds = L.featureGroup([lungo_group])
+var bounds = L.featureGroup([quarto, doccia, doccia_parcheggio, doccia_route])
 map.setMaxBounds(bounds.getBounds(), {
-padding: [150, 150]
+    padding: [6000, 6000]
 });
