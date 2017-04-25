@@ -122,6 +122,17 @@ var corto_group = L.layerGroup([corto, ristoro_massina]);
 var medio_group = L.layerGroup([medio, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
 var lungo_group = L.layerGroup([lungo, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
 var opzione_10_group = L.layerGroup([opzione10, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
+<<<<<<< HEAD
+var opzione_11_group = L.layerGroup([opzione11, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
+var doccia_group = L.layerGroup([doccia, doccia_parcheggio, doccia_route]);
+
+var groupedOverlays = {
+"<b>7,5 Km</b>": corto_group,
+"<b>15,5 Km</b>": medio_group,
+"<b>20,5 Km</b>": lungo_group,
+"<b>10,5 Km</b>": opzione_10_group,
+"<b>11,5 Km</b>": opzione_11_group
+=======
 //var opzione_11_group = L.layerGroup([opzione11, ristoro_massina, ristoro_visconta, ristoro_roccolo]);
 var doccia_group = L.layerGroup([doccia, doccia_parcheggio, doccia_route]);
 
@@ -130,6 +141,7 @@ var groupedOverlays = {
 "<b>10 Km</b>": opzione_10_group,
 "<b>15 Km</b>": medio_group,
 "<b>20 Km</b>": lungo_group
+>>>>>>> gh-pages
 };
 var groupedOverlays2 = {
 "come raggiungerci": servizi,
