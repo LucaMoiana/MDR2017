@@ -70,20 +70,21 @@ var primostyle = {
 "opacity": 0.8,
 "z-index": 2,
 };
+// #E3B62E  #DF014A #75BACA
 var secondostyle = {
+"color": "#ffffff",
+"weight": 4.5,
+"opacity": 1,
+"z-index": 2
+};
+var terzostyle = {
 "color": "#E3B62E",
 "weight": 4.5,
 "opacity": 0.8,
 "z-index": 2
 };
-var terzostyle = {
-"color": "#DF014A",
-"weight": 4.5,
-"opacity": 0.8,
-"z-index": 2
-};
 var quartostyle = {
-"color": "#75BACA",
+"color": "#DF014A",
 "weight": 4.5,
 "opacity": 0.8,
 "z-index": 3
