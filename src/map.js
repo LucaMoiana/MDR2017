@@ -133,9 +133,9 @@ var doccia_group = L.layerGroup([doccia, doccia_parcheggio, doccia_route]);
 
 var groupedOverlays = {
 "<b>7 Km</b>": primo_group,
-"<b>10 Km</b>": secondo_group,
-"<b>15 Km</b>": terzo_group,
-"<b>20 Km</b>": quarto_group
+"<b>10.99 Km</b>": secondo_group,
+"<b>15.99 Km</b>": terzo_group,
+"<b>20.99 Km</b>": quarto_group
 };
 var groupedOverlays2 = {
 "come raggiungerci": servizi,
